@@ -1,10 +1,37 @@
 const {Router} = require('express')
 const router = Router()
-const ToolsController = require('../controllers/toolsController')
+const DueDateService = require('../services/DueDateService')
+const DueDate = require('../models/DueDate')
 
+router.get('/', function(req, res) {
+  var result = '';
 
-router.get('/', ToolsController.calculateDueDate)
+  if (req.body.date) {
+    const dueDateModel = new DueDate(req.body.date, req.body.turnaroundTime)
+    const dueDateService = new DueDateService
+    result = dueDateService.calculateDueDate(dueDateModel)
+}
+  res.render('index', {
+    title: "Home",
+    isHome: true,
+    result: result
+  })
+});
 
-router.post('/', ToolsController.calculateDueDate)
+router.post('/', function(req, res) {
+  var result = '';
+
+  if (req.body.date) {
+    const dueDateModel = new DueDate(req.body.date, req.body.turnaroundTime)
+    const dueDateService = new DueDateService
+    result = dueDateService.calculateDueDate(dueDateModel)
+}
+  res.render('index', {
+    title: "Home",
+    isHome: true,
+    result: result
+  })
+});
+
 
 module.exports = router
