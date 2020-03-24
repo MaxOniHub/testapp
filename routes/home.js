@@ -1,11 +1,10 @@
 const {Router} = require('express')
 const router = Router()
+const ToolsController = require('../controllers/toolsController')
 
-router.get('/', (req, res) => {
-  res.render('index', {
-    title: "Home",
-    isHome: true
-  })
-})
+
+router.get('/', ToolsController.calculateDueDate)
+
+router.post('/', ToolsController.calculateDueDate)
 
 module.exports = router

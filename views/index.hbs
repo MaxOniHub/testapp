@@ -1,1 +1,21 @@
-<h1>Test</h1>
+<h1>Due Date Calculator</h1>
+
+<form action="/" method="POST">
+
+<div class="input-field">
+  <input id="date" name="date" type="text" class="validate" required>
+  <label for="date">Date</label>
+  <span class="helper-text" data-error="Wrong date"></span>
+</div>
+
+<div class="input-field">
+  <input id="turnaroundTime" name="turnaroundTime" type="number" class="validate" required min=1>
+  <label for="turnaroundTime">Turnaround Time</label>
+  <span class="helper-text" data-error="Wrong turnaround time"></span>
+</div>
+
+<button class="btn btn-primary">Calculate</button>
+
+</form>
+
+{{ result }}

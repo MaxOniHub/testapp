@@ -3,8 +3,6 @@ const path = require('path')
 const exphbs = require('express-handlebars')
 
 const homeRoutes = require('./routes/home')
-const coursesRoutes = require('./routes/courses')
-const addRoutes = require('./routes/add')
 
 const app = express()
 
@@ -18,10 +16,8 @@ app.set('view engine', 'hbs')
 app.set('views', 'views')
 
 app.use(express.static('public'))
+app.use(express.urlencoded({extended: false}))
 app.use('/', homeRoutes)
-app.use(coursesRoutes)
-app.use(addRoutes)
-
 
 const PORT = process.env.PORT || 3000
 
