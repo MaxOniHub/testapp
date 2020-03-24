@@ -13,7 +13,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "in-range": "^2.0.0",
-    "mathjs": "^6.6.1"
+    "mathjs": "^6.6.1",
+    "chai": "^4.2.0"
   },
   "devDependencies": {
     "mocha": "^7.1.1",
