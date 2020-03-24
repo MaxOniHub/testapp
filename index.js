@@ -1,30 +1,20 @@
-const express = require('express')
-const path = require('path')
-const exphbs = require('express-handlebars')
+var express = require('express');
+require('express-group-routes');
+var bodyParser = require('body-parser');
+var app = express();
+var toolsRouter = require('./routes/toolsRoute')
 
-const homeRoutes = require('./routes/home')
-const coursesRoutes = require('./routes/courses')
-const addRoutes = require('./routes/add')
+// add body-parser middleware to be able to read json request body
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
 
-const app = express()
+// add custom routes
+app.use('/tools', toolsRouter)
 
-const hbs = exphbs.create({
-  defaultLayout: 'main',
-  extname: 'hbs'
-})
-
-app.engine('hbs', hbs.engine)
-app.set('view engine', 'hbs')
-app.set('views', 'views')
-
-app.use(express.static('public'))
-app.use('/', homeRoutes)
-app.use(coursesRoutes)
-app.use(addRoutes)
-
-
+// init port
 const PORT = process.env.PORT || 3000
 
-app.listen(PORT, () => function() {
-  console.log(`Server is running on port ${PORT}`)
-})
+
+app.listen(PORT, function () {
+  console.log(`Server is running on port ${PORT}!`);
+});
