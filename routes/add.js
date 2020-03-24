@@ -8,5 +8,8 @@ router.get('/add', (req, res) => {
   })
 })
 
+router.post('/add', () => function() {
+
+})
 
 module.exports = router
